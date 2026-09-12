@@ -1,6 +1,10 @@
-Ordini Fornitori PWA 1.5.1
+Ordini Fornitori PWA 1.6.1
 
-Novità:
-- quantità minima ordinabile per ogni prodotto
-- compatibilità import/export con la versione Android aggiornata
-- installabile da Safari/Chrome come web app
+Aggiornamenti:
+- card più compatte e prodotti selezionati evidenziati
+- colore accent configurabile
+- storico con totale mese, confronto, media ordine, numero ordini e fornitore più costoso
+- grafico settimanale
+- eliminazione singola/multipla/filtrata dello storico e azzeramento spese
+- annulla ultima eliminazione/archiviazione
+- backup completo separato dalle sole liste, incluse impostazioni tema/accent
