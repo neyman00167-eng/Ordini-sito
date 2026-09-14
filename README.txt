@@ -1,3 +1,8 @@
+Ordini Fornitori PWA 1.7.1
+- pulsante Nota rapido sulla card prodotto
+- Nota + / Nota ✓
+- incremento nascosto dalla card ma ancora attivo e configurabile
+
 Ordini Fornitori PWA 1.7.0
 - incremento quantità separato dal minimo
 - note facoltative per prodotto
