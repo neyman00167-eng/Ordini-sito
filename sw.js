@@ -1,11 +1,61 @@
-const C='ordini-pwa-v172';
-const F=['./','index.html','styles.css?v=171','app.js?v=171','manifest.json?v=171','icons/icon-192.png','icons/icon-512.png'];
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(C).then(c=>c.addAll(F)))});
-self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const k of await caches.keys())if(k!==C)await caches.delete(k);await self.clients.claim()})()));
-self.addEventListener('fetch',e=>{
-  const u=new URL(e.request.url);
-  if(e.request.mode==='navigate'||u.pathname.endsWith('/index.html')||u.pathname.endsWith('/')){
-    e.respondWith(fetch(e.request,{cache:'no-store'}).then(r=>{const c=r.clone();caches.open(C).then(x=>x.put('index.html',c));return r}).catch(()=>caches.match('index.html')));return;
+const CACHE='ordini-pwa-v173';
+const CORE=[
+  './',
+  './index.html',
+  './styles.css?v=173',
+  './app.js?v=173',
+  './manifest.json?v=173',
+  './icons/icon-192.png',
+  './icons/icon-512.png'
+];
+
+self.addEventListener('install',event=>{
+  self.skipWaiting();
+  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)));
+});
+
+self.addEventListener('activate',event=>{
+  event.waitUntil((async()=>{
+    const keys=await caches.keys();
+    await Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)));
+    await self.clients.claim();
+  })());
+});
+
+self.addEventListener('fetch',event=>{
+  const req=event.request;
+  if(req.method!=='GET') return;
+  const url=new URL(req.url);
+  const sameOrigin=url.origin===self.location.origin;
+  if(!sameOrigin) return;
+
+  const isShell=req.mode==='navigate' ||
+    url.pathname.endsWith('/index.html') ||
+    url.pathname.endsWith('/app.js') ||
+    url.pathname.endsWith('/styles.css') ||
+    url.pathname.endsWith('/manifest.json');
+
+  if(isShell){
+    event.respondWith((async()=>{
+      try{
+        const fresh=await fetch(req,{cache:'no-store'});
+        const cache=await caches.open(CACHE);
+        cache.put(req,fresh.clone());
+        return fresh;
+      }catch(err){
+        return (await caches.match(req)) || (await caches.match('./index.html'));
+      }
+    })());
+    return;
   }
-  e.respondWith(fetch(e.request).then(r=>{const c=r.clone();caches.open(C).then(x=>x.put(e.request,c));return r}).catch(()=>caches.match(e.request)));
+
+  event.respondWith((async()=>{
+    const cached=await caches.match(req);
+    const network=fetch(req,{cache:'no-store'}).then(async fresh=>{
+      const cache=await caches.open(CACHE);
+      cache.put(req,fresh.clone());
+      return fresh;
+    }).catch(()=>null);
+    return cached || await network || new Response('',{status:504});
+  })());
 });
