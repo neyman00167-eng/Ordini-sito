@@ -1,3 +1,8 @@
+Ordini Fornitori PWA 1.8.1
+- Correzione schermata vuota introdotta nella 1.8.0.
+- Inizializzazione categorie prima del primo render.
+- Cache anti-cache aggiornata alla 1.8.1.
+
 Ordini Fornitori PWA 1.8.0
 - categorie fornitori con tab orizzontali + Tutti
 - un fornitore può appartenere a una sola categoria
