@@ -1,4 +1,4 @@
-const C='ordini-pwa-v171';
+const C='ordini-pwa-v172';
 const F=['./','index.html','styles.css?v=171','app.js?v=171','manifest.json?v=171','icons/icon-192.png','icons/icon-512.png'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(C).then(c=>c.addAll(F)))});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const k of await caches.keys())if(k!==C)await caches.delete(k);await self.clients.claim()})()));
