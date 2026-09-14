@@ -1,7 +1,6 @@
-Ordini Fornitori PWA 1.6.2
-
-Correzione aggiornamenti GitHub Pages:
-- service worker con aggiornamento immediato
-- cache dei file principali aggiornata dalla rete
-- icone compatibili con repository che le tiene nella root
-- cache busting su app.js e styles.css
+Ordini Fornitori PWA 1.7.0
+- incremento quantità separato dal minimo
+- note facoltative per prodotto
+- note incluse nei messaggi WhatsApp
+- nuovi campi inclusi in backup/import/export
+- compatibile con i dati esistenti
