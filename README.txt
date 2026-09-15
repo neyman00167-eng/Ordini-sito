@@ -1,14 +1,5 @@
-Ordini Fornitori PWA 1.8.1
-- Correzione schermata vuota introdotta nella 1.8.0.
-- Inizializzazione categorie prima del primo render.
-- Cache anti-cache aggiornata alla 1.8.1.
-
-Ordini Fornitori PWA 1.8.0
-- categorie fornitori con tab orizzontali + Tutti
-- un fornitore può appartenere a una sola categoria
-- ultima categoria aperta memorizzata sul dispositivo
-- gestione categorie: crea, rinomina, riordina, elimina
-- eliminando una categoria i fornitori associati finiscono nell'Archivio
-- ripristino dall'Archivio con scelta categoria
-- categorie incluse in backup e import/export
-- anti-cache mantenuto e aggiornato alla v1.8.0
+Ordini Fornitori PWA 1.8.2
+- Messaggio WhatsApp semplificato: nome prodotto, quantità e unità.
+- Rimossi prezzo unitario, moltiplicazione e subtotale per riga dal messaggio WhatsApp.
+- Totale finale e note operatore restano presenti.
+- Cache anti-cache aggiornata alla 1.8.2.

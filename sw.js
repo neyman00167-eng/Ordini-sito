@@ -1,10 +1,10 @@
-const CACHE='ordini-pwa-v181';
+const CACHE='ordini-pwa-v182';
 const CORE=[
   './',
   './index.html',
-  './styles.css?v=181',
-  './app.js?v=181',
-  './manifest.json?v=181',
+  './styles.css?v=182',
+  './app.js?v=182',
+  './manifest.json?v=182',
   './icons/icon-192.png',
   './icons/icon-512.png'
 ];
